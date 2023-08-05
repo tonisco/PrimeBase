@@ -1,12 +1,7 @@
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
-  extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
-    "react-app",
-  ],
+  extends: ["eslint:recommended", "react-app", "prettier"],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
   plugins: ["react-refresh", "simple-import-sort", "prettier"],
@@ -15,25 +10,19 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
-    "import/prefer-default-export": "off",
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
-    "@typescript-eslint/no-misused-promises": [
-      "error",
-      {
-        checksVoidReturn: false,
-      },
-    ],
     "prettier/prettier": [
-      "error",
+      "warn",
       {
         endOfLine: "auto",
       },
     ],
   },
+  ignorePatterns: [".eslintrc*", "tailwind.config.*", "postcss.config.*"],
   overrides: [
     {
       files: ["*.js", "*.jsx", "*.ts", "*.tsx"],
@@ -62,4 +51,4 @@ module.exports = {
       },
     },
   ],
-};
+}
