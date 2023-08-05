@@ -5,6 +5,7 @@ import { RouterProvider } from "react-router-dom"
 import router from "./utils/router"
 
 import "./index.css"
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
