@@ -12,8 +12,8 @@ module.exports = {
     ],
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
-    "import/first": "error",
-    "import/newline-after-import": "error",
+    "import/first": "warn",
+    "import/newline-after-import": "warn",
     "import/no-duplicates": "error",
     "prettier/prettier": [
       "warn",
@@ -28,7 +28,7 @@ module.exports = {
       files: ["*.js", "*.jsx", "*.ts", "*.tsx"],
       rules: {
         "simple-import-sort/imports": [
-          "error",
+          "warn",
           {
             groups: [
               // `react` first, `next` second, then packages starting with a character
