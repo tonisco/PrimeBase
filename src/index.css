@@ -49,3 +49,12 @@
     ),
     url("/images/chart.jpg");
 }
+
+.bc-image {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url("/images/bc-image.jpg");
+}
