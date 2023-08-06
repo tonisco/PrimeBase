@@ -6,6 +6,7 @@ import Achievement from "./Achievement"
 import CarouselItem from "./CarouselItem"
 import carouselTexts from "./carouselTexts"
 import ChooseUs from "./ChooseUs"
+import ContactDetails from "./ContactDetails"
 import FindLoan from "./FindLoan"
 import GetLoan from "./GetLoan"
 import Testimonials from "./Testimonials"
@@ -72,6 +73,7 @@ function App() {
         <ChooseUs />
         <Achievement />
         <Testimonials />
+        <ContactDetails />
       </Layout>
     </>
   )
