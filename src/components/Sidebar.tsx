@@ -22,7 +22,10 @@ const Sidebar = ({ toggleModal, showModal }: Props) => {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          <li>Loan</li>
+          <li>
+            <NavLink to="/apply">Apply</NavLink>
+          </li>
+          <li>Loans</li>
           <li>About</li>
           <li>Contact</li>
         </ul>

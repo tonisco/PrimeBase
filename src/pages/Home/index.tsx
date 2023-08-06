@@ -15,7 +15,7 @@ import small2 from "/images/small-family.jpg"
 import small1 from "/images/small-loan.jpg"
 import small3 from "/images/small-student.jpg"
 
-function App() {
+const Home = () => {
   return (
     <>
       <Layout>
@@ -79,4 +79,4 @@ function App() {
   )
 }
 
-export default App
+export default Home
