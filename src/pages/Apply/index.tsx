@@ -1,6 +1,8 @@
 import { useState } from "react"
+import axios from "axios"
 import { useForm } from "react-hook-form"
 import { ClipLoader } from "react-spinners"
+import { toast } from "react-toastify"
 import * as yup from "yup"
 
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -8,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import Breadcrumb from "../../components/Breadcrumb"
 import Input from "../../components/Input"
 import Layout from "../../components/Layout"
+import { RequestLoanData, RequestLoanResponse } from "../../types"
 
 const schema = yup
   .object({
@@ -38,7 +41,36 @@ const Apply = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const onSubmit = (data: FormData) => console.log(data)
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true)
+    try {
+      const result = await axios.post<
+        any,
+        RequestLoanResponse,
+        RequestLoanData
+      >(import.meta.env.VITE_API_URL, {
+        action: "request_for_loan",
+        full_name: data.full_name,
+        loan_amount: data.loan_amount,
+        repayment_duration: data.repayment_duration,
+      })
+
+      if (!result.result) {
+        return toast.error(result.message)
+      }
+
+      toast.success(result.message)
+
+      //   send email
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.message)
+        return error.message
+      } else {
+        toast.error("Failed to send message")
+      }
+    }
+  }
 
   return (
     <Layout>
