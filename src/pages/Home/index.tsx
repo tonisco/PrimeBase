@@ -12,6 +12,7 @@ import Layout from "../../components/Layout"
 import CarouselItem from "./CarouselItem"
 import carouselTexts from "./carouselTexts"
 import FindLoan from "./FindLoan"
+import Testimonials from "./Testimonials"
 
 import small2 from "/images/small-family.jpg"
 import small1 from "/images/small-loan.jpg"
@@ -100,8 +101,8 @@ function App() {
                 <div className="flex flex-col gap-4 p-10">
                   <h1 className="text-2xl font-semibold">Loan gets approved</h1>
                   <p className="text-gray-500">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Culpa, consequuntur! Tempore obcaecati
+                    You will within five working hours of submitting your
+                    application and get approved
                   </p>
                 </div>
               </div>
@@ -114,8 +115,8 @@ function App() {
                     Receive Loan Amount
                   </h1>
                   <p className="text-gray-500">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Culpa, consequuntur! Tempore obcaecati
+                    After approved, we will can you to work out the details. We
+                    sent money within hours of approved.
                   </p>
                 </div>
               </div>
@@ -229,6 +230,7 @@ function App() {
             </div>
           </div>
         </section>
+        <Testimonials />
       </Layout>
     </>
   )
