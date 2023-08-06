@@ -4,9 +4,16 @@ type Props = React.InputHTMLAttributes<HTMLInputElement> & {
   labelText: string
   errorText?: string
   message?: string
+  labelClass?: string
 }
 
-const Input = ({ labelText, errorText, message, ...props }: Props) => {
+const Input = ({
+  labelText,
+  errorText,
+  message,
+  labelClass,
+  ...props
+}: Props) => {
   return (
     <div>
       <label
@@ -20,7 +27,9 @@ const Input = ({ labelText, errorText, message, ...props }: Props) => {
           placeholder={labelText}
         />
 
-        <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-2/3 bg-white py-0.5 px-1 text-sm text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm peer-focus:text-blue-600">
+        <span
+          className={`pointer-events-none absolute start-2.5 top-0 -translate-y-2/3 bg-white py-0.5 px-1 text-sm text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm peer-focus:text-blue-600 ${labelClass}`}
+        >
           {labelText}
         </span>
       </label>
