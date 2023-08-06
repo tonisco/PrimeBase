@@ -4,6 +4,11 @@ import Layout from "../../components/Layout"
 
 import CarouselItem from "./CarouselItem"
 import carouselTexts from "./carouselTexts"
+import FindLoan from "./FindLoan"
+
+import small2 from "/images/small-family.jpg"
+import small1 from "/images/small-loan.jpg"
+import small3 from "/images/small-student.jpg"
 
 function App() {
   return (
@@ -26,6 +31,38 @@ function App() {
             />
           ))}
         </Carousel>
+        <section className="px-6 py-28">
+          <div className="max-w-6xl mx-auto text-center">
+            <h1 className="mb-2 text-2xl font-bold capitalize sm:text-4xl">
+              Let us help you find a loan
+            </h1>
+            <p className="mb-16 text-gray-500">
+              We will match you with a loan program that meet your financial
+              need.
+            </p>
+
+            <div className="grid grid-cols-1 gap-8 justify-items-center md:grid-cols-2 lg:grid-cols-3">
+              <FindLoan
+                image={small1}
+                text="Discover flexible car financing options for new or used
+                    cars, and specialty vehicles porta."
+                title="Personal Loan"
+              />
+              <FindLoan
+                image={small2}
+                text="Discover flexible car financing options for new or used
+                    cars, and specialty vehicles porta."
+                title="House Loan"
+              />
+              <FindLoan
+                image={small3}
+                text="Discover flexible car financing options for new or used
+                    cars, and specialty vehicles porta."
+                title="Student Loan"
+              />
+            </div>
+          </div>
+        </section>
       </Layout>
     </>
   )
