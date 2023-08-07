@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 
@@ -16,6 +16,14 @@ import Table from "../../components/Table"
 import { GetAllLoanData, GetAllLoanResponse } from "../../types"
 import data from "../../utils/data"
 
+const formatNumber = (val: string) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    currencyDisplay: "narrowSymbol",
+  }).format(parseInt(val))
+}
+
 const columnHelper = createColumnHelper<GetAllLoanResponse["data"][0]>()
 
 const columns = [
@@ -32,7 +40,7 @@ const columns = [
     header: () => "Full Name",
   }),
   columnHelper.accessor("LOAN_AMOUNT", {
-    cell: (info) => info.getValue().toLocaleLowerCase(),
+    cell: (info) => formatNumber(info.getValue()),
     header: () => "Loan Amount",
   }),
   columnHelper.accessor("REPAYMENT_DURATION", {
@@ -63,7 +71,7 @@ const Loans = () => {
   const [values, setValues] = useState<GetAllLoanResponse["data"]>([])
   const [idSearch, setIdSearch] = useState("")
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     try {
       const getData = await axios.post<any, GetAllLoanResponse, GetAllLoanData>(
         import.meta.env.VITE_API_URL,
@@ -87,11 +95,11 @@ const Loans = () => {
         )
       } else setValues(data.data)
     }
-  }
+  }, [idSearch])
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [getData])
 
   const { getHeaderGroups, getRowModel, setPageIndex, getPageCount } =
     useReactTable({

@@ -52,7 +52,7 @@ const Table = <T extends object>({
           ))}
         </tbody>
       </table>
-      {getPageCount() && (
+      {getPageCount() > 0 && (
         <div className="self-center mx-auto">
           <Pagination pageCount={getPageCount()} changePage={setPageIndex} />
         </div>

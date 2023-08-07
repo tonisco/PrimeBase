@@ -32,8 +32,8 @@ export type GetAllLoanData = {
 }
 
 export type GetPaymentScheduleResponse = {
-  code: 105
-  result: false
+  code: number
+  result: boolean
   message: string
   TRANSACTION_ID: string
   FULL_NAME: string
