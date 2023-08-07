@@ -1,6 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
-import { useForm } from "react-hook-form"
+import { Controller, useForm } from "react-hook-form"
 import { ClipLoader } from "react-spinners"
 import { toast } from "react-toastify"
 import * as yup from "yup"
@@ -20,7 +20,7 @@ const schema = yup
         /(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})/,
         "Full name is not filled correctly",
       )
-      // .matches(/^[a-zA-Z]+ [a-zA-Z]+$/, "Full name is required")
+      .matches(/^[a-zA-Z]+ [a-zA-Z]+$/, "Full name is not filled correctly")
       .required(),
     loan_amount: yup.number().required(),
     repayment_duration: yup.number().required(),
@@ -32,7 +32,7 @@ type FormData = yup.InferType<typeof schema>
 
 const Apply = () => {
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({
@@ -87,36 +87,56 @@ const Apply = () => {
               form and get approved within five working hours
             </p>
           </div>
-          <Input
-            labelText="Full name"
-            {...register("full_name")}
-            // id="full_name"
-            errorText={errors.full_name?.message}
+
+          <Controller
+            name="full_name"
+            control={control}
+            render={({ field }) => (
+              <Input
+                labelText="Full name"
+                errorText={errors.full_name?.message}
+                {...field}
+              />
+            )}
           />
 
-          <Input
-            labelText="Loan Amount"
-            {...register("loan_amount")}
-            id="loan_amount"
-            type="number"
-            errorText={errors.loan_amount?.message}
+          <Controller
+            name="loan_amount"
+            control={control}
+            render={({ field }) => (
+              <Input
+                type="number"
+                errorText={errors.loan_amount?.message}
+                labelText="Loan Amount"
+                {...field}
+              />
+            )}
           />
 
-          <Input
-            labelText="Repayment Duration (in months)"
-            {...register("repayment_duration")}
-            id="repayment_duration"
-            type="number"
-            errorText={errors.repayment_duration?.message}
+          <Controller
+            name="repayment_duration"
+            control={control}
+            render={({ field }) => (
+              <Input
+                type="number"
+                errorText={errors.repayment_duration?.message}
+                labelText="Repayment Duration (in months)"
+                {...field}
+              />
+            )}
           />
-
-          <Input
-            {...register("email")}
-            labelText="Email"
-            id="email"
-            type="email"
-            errorText={errors.email?.message}
-            message="Email is used to receive the repayment schedule and its optional"
+          <Controller
+            name="email"
+            control={control}
+            render={({ field }) => (
+              <Input
+                type="email"
+                errorText={errors.email?.message}
+                message="Email is used to receive the repayment schedule and its optional"
+                labelText="Email"
+                {...field}
+              />
+            )}
           />
 
           <button

@@ -22,18 +22,45 @@ const Navbar = () => {
           />
           <h3 className="text-2xl font-semibold">Prime Base</h3>
         </div>
-        <ul className="items-center hidden gap-4 sm:flex">
+        <ul className="items-center hidden sm:flex">
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `px-3 py-1.5 rounded ${
+                  isActive ? "text-white bg-blue-500" : null
+                }`
+              }
+              to="/"
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/apply">Apply</NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `px-3 py-1.5 rounded ${
+                  isActive ? "text-white bg-blue-500" : null
+                }`
+              }
+              to="/apply"
+            >
+              Apply
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/loans">Loans</NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `px-3 py-1.5 rounded ${
+                  isActive ? "text-white bg-blue-500" : null
+                }`
+              }
+              to="/loans"
+            >
+              Loans
+            </NavLink>
           </li>
-          <li>About</li>
-          <li>Contact</li>
+          <li className="px-3 py-1.5 rounded">About</li>
+          <li className="px-3 py-1.5 rounded">Contact</li>
         </ul>
 
         <IoMdMenu className="block text-xl sm:hidden" onClick={toggleModal} />
